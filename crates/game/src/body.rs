@@ -63,8 +63,19 @@ impl Body {
     }
 }
 
+/// UE Viewer (umodel, MIT): the env var UMODEL, the copy shipped in third_party/umodel, one in
+/// tools/umodel, or one next to the executable.
 pub fn umodel_exe() -> PathBuf {
-    Path::new(env!("CARGO_MANIFEST_DIR")).join("../../tools/umodel/umodel_64.exe")
+    let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../..");
+    let mut candidates: Vec<PathBuf> = std::env::var_os("UMODEL").map(PathBuf::from).into_iter().collect();
+    candidates.push(root.join("third_party/umodel/umodel_64.exe"));
+    candidates.push(root.join("tools/umodel/umodel_64.exe"));
+    if let Some(dir) = std::env::current_exe().ok().and_then(|e| e.parent().map(Path::to_path_buf)) {
+        candidates.push(dir.join("umodel_64.exe"));
+        candidates.push(dir.join("umodel").join("umodel_64.exe"));
+    }
+    let first = candidates[0].clone();
+    candidates.into_iter().find(|p| p.is_file()).unwrap_or(first)
 }
 
 pub fn cache_dir() -> PathBuf {

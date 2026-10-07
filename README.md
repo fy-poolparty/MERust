@@ -32,7 +32,7 @@ It's a port, not a remake. The logic follows the original game's code, scripts a
 - **Mirror's Edge (PC)**, legally owned (Steam, EA app / Origin or GOG).
 - **Windows 10/11** (the only platform tested so far).
 - **Rust**, latest stable, from [rustup.rs](https://rustup.rs/).
-- **umodel (UE Viewer)** by Gildor, from [gildor.org](https://www.gildor.org/en/projects/umodel). It is used once, to export the character, gun and UI meshes from your install into a local `cache/` folder.
+- **umodel (UE Viewer)** by Gildor is **included** in `third_party/umodel` (MIT license). It is used once, to export the character, gun and UI meshes from your install into a local `cache/` folder.
 - A GPU with Vulkan or DirectX 12 support.
 
 ## Getting started
@@ -43,15 +43,14 @@ It's a port, not a remake. The logic follows the original game's code, scripts a
    git clone https://github.com/fy-poolparty/MERust.git
    cd MERust
    ```
-3. Download umodel and put `umodel_64.exe` at `tools/umodel/umodel_64.exe`.
-4. Build and run. The first build takes a while.
+3. Build and run. The first build takes a while.
    ```bash
    cargo run -p game --release
    ```
-5. On first launch, a folder picker asks for your **Mirror's Edge folder**: the one that contains `TdGame` and `Binaries`, e.g. `C:\Program Files (x86)\Steam\steamapps\common\Mirrors Edge`.
+4. On first launch, a folder picker asks for your **Mirror's Edge folder**: the one that contains `TdGame` and `Binaries`, e.g. `C:\Program Files (x86)\Steam\steamapps\common\Mirrors Edge`.
    - The game remembers your choice.
    - You can change it later with **Change folder** in the menu.
-6. Pick **Test map** and play.
+5. Pick **Test map** and play.
 
 The first time you start a map, the game exports the meshes it needs with umodel into `cache/`, which takes a moment. Later launches reuse them.
 
@@ -104,10 +103,11 @@ You can also set the environment variable `MIRRORS_EDGE_DIR` to your Mirror's Ed
 | `crates/tdsim` | The game logic, in Unreal units: physics, every move, weapons, enemy AI, combat |
 | `crates/me_level` | Loads everything from your install: levels, props, animations, the animation tree, ragdolls, materials, sounds |
 | `crates/game` | The Bevy front end: rendering, input, audio, menu |
+| `third_party/umodel` | UE Viewer (umodel) by Gildor, MIT license, used to export meshes from your install |
 
 Folders that are **git-ignored and must never be committed**, because they hold files derived from the game or third-party tools:
 - `cache/`: meshes exported by umodel
-- `tools/`: umodel and other tools
+- `tools/`: local research tools
 - `reference/`: research material
 - `target/`: build output
 

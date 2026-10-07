@@ -124,6 +124,12 @@ fn setup(mut commands: Commands) {
                 r.spawn(Node { max_width: px(560), ..default() }).with_child((InstallText, text("", 14.0), TextColor(DIM)));
                 button(r, "Change folder", MenuButton::PickFolder, 170.0, IDLE);
             });
+            if !crate::body::umodel_exe().is_file() {
+                p.spawn((
+                    text("umodel not found: models will be missing. Put umodel_64.exe in third_party/umodel or set UMODEL.", 14.0),
+                    TextColor(Color::srgb(1.0, 0.45, 0.35)),
+                ));
+            }
             p.spawn(Node { height: px(12), ..default() });
             button(p, "Quit", MenuButton::Quit, 160.0, IDLE);
         });

@@ -1,0 +1,14 @@
+/target
+# Everything derived from the user's own Mirror's Edge install, plus third-party tools.
+# None of this may ever be committed or published.
+/reference
+/tools
+/cache
+*.upk
+*.me1
+*.u
+# Local only: the old prototype, screenshots, per-machine settings and Claude's local config
+/OLD
+/shots
+settings.txt
+/.claude

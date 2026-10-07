@@ -1,0 +1,10 @@
+﻿[package]
+name = "me_level"
+edition.workspace = true
+version.workspace = true
+license.workspace = true
+
+[dependencies]
+tdsim = { path = "../tdsim" }
+upk = { path = "../upk" }
+glam = "0.32"

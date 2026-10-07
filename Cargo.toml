@@ -1,0 +1,17 @@
+[workspace]
+resolver = "3"
+members = ["crates/upk", "crates/me_level", "crates/tdsim", "crates/game"]
+
+[workspace.package]
+edition = "2024"
+version = "0.1.0"
+license = "MIT OR Apache-2.0"
+
+[workspace.dependencies]
+parry3d = "0.31"
+
+[profile.dev]
+opt-level = 1
+
+[profile.dev.package."*"]
+opt-level = 3

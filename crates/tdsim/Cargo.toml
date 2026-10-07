@@ -1,0 +1,9 @@
+[package]
+name = "tdsim"
+edition.workspace = true
+version.workspace = true
+license.workspace = true
+description = "Mirror's Edge player movement, ported from TdGame.u scripts and MirrorsEdge.exe natives. Unreal units, Z up."
+
+[dependencies]
+parry3d.workspace = true

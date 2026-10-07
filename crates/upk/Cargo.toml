@@ -1,0 +1,9 @@
+﻿[package]
+name = "upk"
+edition.workspace = true
+version.workspace = true
+license.workspace = true
+description = "Reader for Unreal Engine 3 packages as shipped with Mirror's Edge (v536/43)."
+
+[dependencies]
+lzo = "0.1"

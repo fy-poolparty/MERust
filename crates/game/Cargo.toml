@@ -1,0 +1,12 @@
+[package]
+name = "game"
+edition.workspace = true
+version.workspace = true
+license.workspace = true
+
+[dependencies]
+tdsim = { path = "../tdsim" }
+me_level = { path = "../me_level" }
+upk = { path = "../upk" }
+bevy = "0.19"
+rfd = "0.17"
